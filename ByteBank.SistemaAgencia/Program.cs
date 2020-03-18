@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ByteBank.Modelos;
 using ByteBank.Modelos.Funcionarios;
+using ByteBank.SistemaAgencia.Comparadores;
 using ByteBank.SistemaAgencia.Extensoes;
 
 namespace ByteBank.SistemaAgencia
@@ -17,7 +18,7 @@ namespace ByteBank.SistemaAgencia
 
             Console.ReadLine();
         }
-
+        
         static void TestandoVar()
         {
             /*A variavel "var" é uma variavel do tipo generico ou seja ela se adequa de acordo com o tipo da instancia que é iniciada.
@@ -77,6 +78,7 @@ namespace ByteBank.SistemaAgencia
             //TESTE CONTA CORRENTE
             var contas = new List<ContaCorrente>()
             {
+
                 new ContaCorrente(240,45875),
                 new ContaCorrente(451,74575),
                 new ContaCorrente(350,96545),
@@ -84,8 +86,8 @@ namespace ByteBank.SistemaAgencia
                 new ContaCorrente(254,45585)
             };
 
-            //contas.Sort(contas.ag)
-
+            //contas.Sort(); ~~>Ultiliza ainterface ICompareble, por se tratar de objeto.
+            contas.Sort(new ComparadorContaCorrentePorAgencia());
             foreach (var conta in contas)
             {
                 Console.WriteLine($"Agencia: {conta.Agencia}/Numero: {conta.Numero}");
