@@ -14,7 +14,7 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            TestaOrderBy();
+            TestaWhere();
 
             Console.ReadLine();
         }
@@ -72,6 +72,41 @@ namespace ByteBank.SistemaAgencia
             }
         }
 
+        static void TestaWhere()
+        {
+            //----------------------------------------------------------------------------------------------------------------------
+            //TESTE CONTA CORRENTE
+            var contas = new List<ContaCorrente>()
+            {
+                null,
+                new ContaCorrente(240,45875),
+                null,
+                new ContaCorrente(451,74575),
+                new ContaCorrente(350,96545),
+                new ContaCorrente(190,45125),
+                new ContaCorrente(254,45585)
+            };
+            //Separa as contas nulas.
+            //IEnumerable<ContaCorrente> contasNaonulas = contas.Where(conta => conta != null);
+            //Eu quero a conta onde a conta for diferente de null
+            //Ou ▼            
+            //var contasNaoNulas = contas.Where(conta => conta != null);
+            //Ordena as contas que estão no Contas Nao Nulas. 
+            //var contasOrdenadas = contasNaoNulas.OrderBy(conta => conta.Numero);
+            //Ou podemos unir os dois metodos, pois derivam do mesmo tipo "IEnumerable"
+            var contasOrdenadas = contas
+                .Where(conta => conta != null)//Verifico se é null
+                .OrderBy(conta => conta.Numero);//Ordeno caso não seja null
+
+            foreach (var conta in contasOrdenadas)
+            {
+                    Console.WriteLine($"Agencia: {conta.Agencia}/Numero: {conta.Numero}");               
+            }
+
+            //----------------------------------------------------------------------------------------------------------------------
+
+
+        }
         static void TestaOrderBy()
         {
             //----------------------------------------------------------------------------------------------------------------------
