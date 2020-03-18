@@ -14,7 +14,7 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            TestaSort();
+            TestaOrderBy();
 
             Console.ReadLine();
         }
@@ -70,6 +70,53 @@ namespace ByteBank.SistemaAgencia
                 Console.WriteLine(idades[i]);
 
             }
+        }
+
+        static void TestaOrderBy()
+        {
+            //----------------------------------------------------------------------------------------------------------------------
+            //TESTE CONTA CORRENTE
+            var contas = new List<ContaCorrente>()
+            {
+                null,
+                new ContaCorrente(240,45875),
+                null,
+                new ContaCorrente(451,74575),
+                new ContaCorrente(350,96545),
+                new ContaCorrente(190,45125),
+                new ContaCorrente(254,45585)
+            };
+
+            //"OrderBy" não ordena a lista "contas"e sim retorna uma sequencia de indices ordenados da lista
+            //Por isto criamos uma uma variavel do tipo "IOrderedEnumeable", pois o retorno de "OrderBy" é
+            //deste tipo.
+            //IOrderedEnumerable<ContaCorrente> contasOrdenadas =  contas.OrderBy(conta => conta.Numero);
+            //Ou ▼
+            //var contasOrdenadas = contas.OrderBy(conta => conta.Numero);
+            //Ou▼
+            var contasOrdenadas = contas.OrderBy(conta =>{
+                if (conta != null)
+                {
+                     return conta.Numero;
+                }
+                else
+                {
+                    return int.MaxValue;//Retorna o maior valor possivel, assim eu mando aconta de referencia nula
+                                        //para o final da lista.
+                }
+               
+            });
+
+
+            foreach (var conta in contasOrdenadas)
+            {
+                if (conta!=null)
+                {
+                     Console.WriteLine($"Agencia: {conta.Agencia}/Numero: {conta.Numero}");                    
+                }
+            }
+
+            //----------------------------------------------------------------------------------------------------------------------
         }
 
         static void TestaSort()

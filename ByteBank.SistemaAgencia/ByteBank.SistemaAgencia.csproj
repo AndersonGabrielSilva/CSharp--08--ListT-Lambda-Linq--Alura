@@ -46,11 +46,13 @@
     <Compile Include="Comparadores\ComparadorContaCorrentePorAgencia.cs" />
     <Compile Include="CompateTo.cs" />
     <Compile Include="Estagiario.cs" />
+    <Compile Include="ExpreçoesLambda.cs" />
     <Compile Include="Extensoes\ListExtensoes.cs" />
     <Compile Include="IComparer.cs" />
     <Compile Include="Lista.cs" />
     <Compile Include="ListaDeContaCorrente.cs" />
     <Compile Include="ListaDeObject.cs" />
+    <Compile Include="OrderBy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
